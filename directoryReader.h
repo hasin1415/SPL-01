@@ -2,10 +2,8 @@
 #include <vector>
 #include <string>
 #include <windows.h>
-
 #ifndef SPL_01_DIRECTORYREADER_H
 #define SPL_01_DIRECTORYREADER_H
-
 
 class directoryReader {
     std::vector<std::string> Directories(std::vector<std::string> fileNames){
