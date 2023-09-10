@@ -6,8 +6,13 @@
 #define SPL_01_DIRECTORYREADER_H
 
 class directoryReader {
+    public:
+    std:: string fName;
+    directoryReader(std::string fName) {
+        this->fName = fName;
+    };
     std::vector<std::string> Directories(std::vector<std::string> fileNames){
-    const std::string directoryPath = "D:\\";
+    const std::string directoryPath = fName;
     WIN32_FIND_DATA findFileData;
     HANDLE hFind = FindFirstFile((directoryPath + "*").c_str(), &findFileData);
     if (hFind == INVALID_HANDLE_VALUE) {
