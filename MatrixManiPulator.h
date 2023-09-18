@@ -39,6 +39,20 @@ class MatrixManiPulator {
 
         return T;
     }
+    void matrix_adder(vector<vector<int>> m1, vector<vector<int>> m2, vector<vector<int>> m3) {
+        // Check if the matrices have the same dimensions
+        if (m1.size() != m2.size() || m1[0].size() != m2[0].size()) {
+            cout << "The matrices must have the same dimensions." << endl;
+            return;
+        }
+
+        // Add the matrices
+        for (int i = 0; i < m1.size(); i++) {
+            for (int j = 0; j < m1[0].size(); j++) {
+                m3[i][j] = m1[i][j] + m2[i][j];
+            }
+        }
+    }
 };
 
 

@@ -38,7 +38,6 @@ void readCSV(const std::string &filename, CSVData &csvData) {
         std::cerr << "Failed to open the file: " << filename << std::endl;
         return;
     }
-
     std::string line;
     bool isHeader = true;
 
@@ -50,7 +49,7 @@ void readCSV(const std::string &filename, CSVData &csvData) {
             if (isHeader) {
                 csvData.headers.push_back(token);
             } else {
-                double value = std::stod(token); // Convert string to double
+                double value = std::stod(token);
                 row.push_back(value);
             }
         }
@@ -58,10 +57,8 @@ void readCSV(const std::string &filename, CSVData &csvData) {
         if (!isHeader) {
             csvData.data.push_back(row);
         }
-
         isHeader = false;
     }
-
     file.close();
 }
 
