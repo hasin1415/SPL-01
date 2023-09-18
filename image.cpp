@@ -146,3 +146,10 @@ void Image::Export(const char *path) const {
     std::cout << "file created";
 }
 
+int Image::getMWidth() const {
+    return m_width;
+}
+
+int Image::getMHeight() const {
+    return m_height;
+}

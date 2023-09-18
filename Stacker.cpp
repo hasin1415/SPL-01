@@ -3,3 +3,5 @@
 //
 
 #include "Stacker.h"
+
+Image::Image() {}

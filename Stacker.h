@@ -5,22 +5,33 @@
 #ifndef SPL_01_STACKER_H
 #define SPL_01_STACKER_H
 #include "image.h"
-
+#include "iostream"
 
 class Stacker {
+    Image imageOne;
+    Image imageTwo;
+    Image outputImage;
     public:
-    image img;
-    Stacker(image img) {
-        this->img = img;
+    Stacker(Image imageOne, Image imageTwo) {
+        this->imageOne = *new Image(imageOne);
+        this->imageTwo = *new Image(imageTwo);
     };
-    void stacker(int x, int y, int width, int height, int n, std::string filename) {
-        image imgNew = image(width, height);
-        for (int i = 0; i < n; i++) {
-            imgNew.copyImage(img, x, y, width, height, i * width, i * height);
+    Image stackImages(){
+        if(imageOne.getMHeight()!= imageTwo.getMHeight() || imageOne.getMWidth() != imageTwo.getMWidth()){
+            std::cout << "The images must have the same dimensions." << std::endl;
+            exit(1);
         }
-        imgNew.saveImage(filename);
-    }
+        else{
+            outputImage = *new Image(imageOne.getMHeight(), imageOne.getMWidth());
+            for (int i = 0; i < imageOne.getMHeight(); i++) {
+                for (int j = 0; j < imageOne.getMWidth(); j++) {
+                    outputImage.setPixel(i,j,(imageOne.getPixel(i,j)+imageTwo.getPixel(i,j))/2);
+                }
+            }
 
+        }
+
+    }
 
 
 
