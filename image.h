@@ -18,7 +18,6 @@ public:
     void Read(const char* path);
 
     int getMWidth() const;
-
     int getMHeight() const;
 
 private:
