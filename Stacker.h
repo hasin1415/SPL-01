@@ -33,8 +33,25 @@ class Stacker {
 
     }
 
-
-
+/*
+ *     for(int y=0;y<One.getMHeight();y++){
+        for(int x = 0;x<One.getMWidth();x++){
+            Color color1 = One.GetColor(x,y);
+            Color color2 = Two.GetColor(x,y);
+            result.SetColor(Color((color1.red+color2.red)/2.0,(color1.green+color2.green)/2.0,(color1.blue+color2.blue)/2.0),x,y);
+            Color color3 = three.GetColor(x,y);
+            Color ik = result.GetColor(x,y);
+            result.SetColor(Color((ik.red+color3.red)/2,(ik.green+color3.green)/2,(ik.blue+color3.blue)/2),x,y);
+            Color color4 = four.GetColor(x,y);
+            ik = result.GetColor(x,y);
+            result.SetColor(Color((ik.red+color4.red)/2,(ik.green+color4.green)/2,(ik.blue+color4.blue)/2),x,y);
+            Color color5 = five.GetColor(x,y);
+            ik = result.GetColor(x,y);
+            result.SetColor(Color((ik.red+color5.red)/2,(ik.green+color5.green)/2,(ik.blue+color5.blue)/2),x,y);
+            //result.SetColor(Color((color1.red+color2.red+color3.red+color4.red+color5.red)/5.0,(color1.green+color2.green+color3.green+color4.green+color5.green)/5.0,(color1.blue+color2.blue+color3.blue+color4.blue+color5.blue)/5.0),x,y);
+        }
+    }
+*/
 };
 
 
