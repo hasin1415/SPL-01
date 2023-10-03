@@ -6,6 +6,7 @@
 #include "vector"
 #include "CSVData.h"
 #include "iostream"
+#include "random"
 class MatrixManiPulator {
     CSVData csvDataOne;
     CSVData csvDataTwo;
@@ -14,6 +15,17 @@ public:
         std::vector<std::vector<double>> matrix;
         for (const std::vector<double> &row : csvData.data) {
             matrix.push_back(row);
+        }
+        return matrix;
+    }
+    matrixCSV
+    std::vector<double> generateNormalColumnMatrix(int size) {
+        std::vector<double> matrix;
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::normal_distribution<> d(0, 1);
+        for (int i = 0; i < size; i++) {
+            matrix.push_back(d(gen));
         }
         return matrix;
     }

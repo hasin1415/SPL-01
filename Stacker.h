@@ -25,7 +25,7 @@ class Stacker {
             outputImage = *new Image(imageOne.getMHeight(), imageOne.getMWidth());
             for (int i = 0; i < imageOne.getMHeight(); i++) {
                 for (int j = 0; j < imageOne.getMWidth(); j++) {
-                    outputImage.setPixel(i,j,(imageOne.getPixel(i,j)+imageTwo.getPixel(i,j))/2);
+                    outputImage.SetColor(Color(),i,j);
                 }
             }
 

@@ -41,9 +41,9 @@ void Image::Read(const char* path){
         for(int x = 0;x<m_width;x++){
             unsigned char color[3];
             file.read(reinterpret_cast<char*>(color),3);
-            m_colors[y*m_width+x].red = static_cast<float>(color[2])/255.0f;
+            m_colors[y*m_width+x].red = static_cast<float>(color[0])/255.0f;
             m_colors[y*m_width+x].green =  static_cast<float>(color[1])/255.0f;
-            m_colors[y*m_width+x].blue =  static_cast<float>(color[0])/255.0f;
+            m_colors[y*m_width+x].blue =  static_cast<float>(color[2])/255.0f;
             file.ignore(padddingAmount);
         }
     }
