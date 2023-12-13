@@ -11,6 +11,7 @@
 
 class imageFinder {
 private:
+    int flag = 0;
     std::vector<std::string> fileNames;
     std::vector<std::string> files ;
     std::vector<std::string> imageNames;

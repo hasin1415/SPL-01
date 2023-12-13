@@ -12,3 +12,4 @@ class Gradient {
 
 
 #endif //SPL_01_GRADIENT_H
+

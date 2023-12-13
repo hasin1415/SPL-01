@@ -2,7 +2,7 @@
 #include "string"
 #include <iostream>
 #include <filesystem>
-
+#include "Gradient.h"
 using namespace std;
 int main(){
     const int width = 680;
@@ -17,4 +17,5 @@ int main(){
     Image copy(0,0);
     copy.Read("a.bmp");
     copy.Export("copy.bmp");
+
 }

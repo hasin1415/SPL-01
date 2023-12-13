@@ -1,4 +1,4 @@
-#include<vector>
+ #include<vector>
 struct Color{
     float red, green ,blue;
     Color();
