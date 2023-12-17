@@ -5,14 +5,17 @@
 #ifndef SPL_01_CSVREADER_H
 #define SPL_01_CSVREADER_H
 
-#include "bits/stdc++.h"
+
+
+#include <bits/stdc++.h>
+
 
 class CSVReader {
 private:
     std::string filePath;
     std::vector<std::string> headers;
     std::vector<std::vector<long double>> columns;
-    int numRows; // Added numRows
+    int numRows;
 
 public:
     CSVReader(const std::string& path) : filePath(path), numRows(0) {
@@ -26,7 +29,6 @@ public:
         }
 
         std::string line, cell;
-        // Read header
         if (std::getline(file, line)) {
             std::stringstream headerStream(line);
             while (std::getline(headerStream, cell, ',')) {
@@ -34,8 +36,6 @@ public:
                 columns.push_back(std::vector<long double>{});
             }
         }
-
-        // Read data
         while (std::getline(file, line)) {
             std::stringstream lineStream(line);
             int colIdx = 0;
@@ -44,13 +44,11 @@ public:
                     long double value = std::stod(cell);
                     columns[colIdx].push_back(value);
                 } catch (...) {
-                    // Handle conversion errors or non-numeric data
-                    // For simplicity, you might choose to skip or handle errors differently
-                    columns[colIdx].push_back(0.0); // Placeholder value
+                    columns[colIdx].push_back(0.0);
                 }
                 colIdx++;
             }
-            numRows++; // Increment numRows for each row read
+            numRows++;
         }
         file.close();
     }
@@ -69,7 +67,6 @@ public:
         return numRows;
     }
     void csvSplitter() {
-        // Ensure there's enough data to split
         if (numRows < 4) {
             std::cerr << "Insufficient data to split into 4 files." << std::endl;
             return;
@@ -79,18 +76,12 @@ public:
         for (int fileIdx = 0; fileIdx < 4; ++fileIdx) {
             std::string outputFileName = "split_" + std::to_string(fileIdx + 1) + ".csv";
             std::ofstream outputFile(outputFileName);
-
-            // Write headers to each file
             for (const std::string& header : headers) {
                 outputFile << header << ",";
             }
             outputFile << std::endl;
-
-            // Determine range of rows for this file
             int startRow = fileIdx * rowsPerFile;
             int endRow = std::min((fileIdx + 1) * rowsPerFile, numRows);
-
-            // Write data rows to the file
             for (int row = startRow; row < endRow; ++row) {
                 for (size_t col = 0; col < columns.size(); ++col) {
                     outputFile << columns[col][row];
@@ -160,21 +151,20 @@ public:
             }
 
             if (skipHeader) {
-                // Skip the header line
                 std::string header;
                 std::getline(fileToMerge, header);
             } else {
-                // Copy content from the first file (which contains the header)
                 mergedFile << fileToMerge.rdbuf();
-                skipHeader = true; // Set flag to skip headers for subsequent files
+                skipHeader = true;
             }
-            // Copy the content except the header line
             std::copy(std::istreambuf_iterator<char>(fileToMerge), std::istreambuf_iterator<char>(), std::ostreambuf_iterator<char>(mergedFile));
             fileToMerge.close();
         }
         mergedFile.close();
     }
+
 };
+
 
 
 #endif //SPL_01_CSVREADER_H

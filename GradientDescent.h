@@ -4,9 +4,9 @@
 
 #ifndef SPL_01_GRADIENTDESCENT_H
 #define SPL_01_GRADIENTDESCENT_H
-
 #include "CSVReader.h"
 #include "MatrixManipulator.h"
+
 
 class GradientDescent {
 private:
@@ -22,9 +22,9 @@ public:
         return coefficients;
     }
     std::vector<long double> ComputeGradientDescent() {
-        std::vector<long double> x_one = reader.getColumn("GrLivArea");
-        std::vector<long double> x_two = reader.getColumn("TotalBsmtSF");
-        std::vector<long double> y = reader.getColumn("SalePrice");
+        std::vector<long double> x_one = reader.getColumn("Distance (LY)");
+        std::vector<long double> x_two = reader.getColumn("Temperature (K)");
+        std::vector<long double> y = reader.getColumn("Brightness");
         int NumberRows = reader.getNumberRows();
         MatrixManipulator matrixManipulator;
         long double x_one_mean = matrixManipulator.meanVector(x_one);
@@ -84,16 +84,19 @@ public:
     void setCoefficients(const std::vector<long double> &coefficients) {
         GradientDescent::coefficients = coefficients;
     }
-    const CSVReader &getReader() const {
+    const CSVReader &getReader() const
+    {
         return reader;
     }
-    void setReader(const CSVReader &reader) {
+    void setReader(const CSVReader &reader)
+    {
         GradientDescent::reader = reader;
     }
-    long double predictSalePrice(long double area, long double basement, std::vector<long double> coefficients) {
+    long double predictBrightness(long double area, long double basement, std::vector<long double> coefficients)
+    {
         MatrixManipulator matrixManipulator;
         std::vector<long double> x_one = reader.getColumn("GrLivArea");
-        std::vector<long double> x_two = reader.getColumn("TotalBsmtSF");
+        std::vector<long double> x_two = reader.getColumn("Temperature (K)");
         long double x_one_mean = matrixManipulator.meanVector(x_one);
         long double x_two_mean = matrixManipulator.meanVector(x_two);
         long double x_one_variance = matrixManipulator.standardDeviationVector(x_one);
@@ -103,11 +106,12 @@ public:
         long double predicted_price = coefficients[0] * area + coefficients[1] * basement + coefficients[2];
         return predicted_price;
     }
-    long double predictSalePrice(long double area, long double basement) {
+    long double predictBrightness(long double area, long double basement)
+    {
         std::vector<long double> coefficient = get_coefficients();
         MatrixManipulator matrixManipulator;
-        std::vector<long double> x_one = reader.getColumn("GrLivArea");
-        std::vector<long double> x_two = reader.getColumn("TotalBsmtSF");
+        std::vector<long double> x_one = reader.getColumn("Distance (LY)");
+        std::vector<long double> x_two = reader.getColumn("Temperature (K)");
         long double x_one_mean = matrixManipulator.meanVector(x_one);
         long double x_two_mean = matrixManipulator.meanVector(x_two);
         long double x_one_variance = matrixManipulator.standardDeviationVector(x_one);
@@ -118,7 +122,5 @@ public:
         return predicted_price;
     }
 };
-#endif //PRACTICE_GRADIENTDESCENT_H
-
 
 #endif //SPL_01_GRADIENTDESCENT_H

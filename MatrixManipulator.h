@@ -1,22 +1,20 @@
 //
-// Created by ASUS on 12/13/2023.
+// Created by ASUS on 12/16/2023.
 //
 
 #ifndef SPL_01_MATRIXMANIPULATOR_H
 #define SPL_01_MATRIXMANIPULATOR_H
-
 #include <iostream>
 #include <vector>
 #include <cmath>
+
 class MatrixManipulator {
 public:
     std::vector<std::vector<long double>> matrixMultiplicator(const std::vector<std::vector<long double>>& matrixOne, const std::vector<std::vector<long double>>& matrixTwo) {
         int m = matrixOne.size();
         int n = matrixTwo[0].size();
         int p = matrixTwo.size();
-
         std::vector<std::vector<long double>> result(m, std::vector<long double>(n, 0.0));
-
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
                 for (int k = 0; k < p; ++k) {
@@ -24,7 +22,6 @@ public:
                 }
             }
         }
-
         return result;
     }
 
@@ -99,6 +96,7 @@ public:
         }
         return result;
     }
+
 };
 
 
