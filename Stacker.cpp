@@ -1,7 +1,5 @@
 //
-// Created by ASUS on 9/7/2023.
+// Created by ASUS on 12/16/2023.
 //
 
 #include "Stacker.h"
-
-Image::Image() {}
